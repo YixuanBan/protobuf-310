@@ -1,0 +1,114 @@
+syntax = "proto3";
+
+package protobuf_unittest;
+
+option csharp_namespace = "Google.Protobuf.TestProtos";
+option java_multiple_files = true;
+option java_package = "com.google2.protobuf.test";
+
+import "google/protobuf/any.proto";
+import "google/protobuf/api.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/source_context.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/type.proto";
+import "google/protobuf/wrappers.proto";
+
+// Test that we can include all well-known types.
+// Each wrapper type is included separately, as languages
+// map handle different wrappers in different ways.
+message TestWellKnownTypes {
+  google2.protobuf.Any any_field = 1;
+  google2.protobuf.Api api_field = 2;
+  google2.protobuf.Duration duration_field = 3;
+  google2.protobuf.Empty empty_field = 4;
+  google2.protobuf.FieldMask field_mask_field = 5;
+  google2.protobuf.SourceContext source_context_field = 6;
+  google2.protobuf.Struct struct_field = 7;
+  google2.protobuf.Timestamp timestamp_field = 8;
+  google2.protobuf.Type type_field = 9;
+  google2.protobuf.DoubleValue double_field = 10;
+  google2.protobuf.FloatValue float_field = 11;
+  google2.protobuf.Int64Value int64_field = 12;
+  google2.protobuf.UInt64Value uint64_field = 13;
+  google2.protobuf.Int32Value int32_field = 14;
+  google2.protobuf.UInt32Value uint32_field = 15;
+  google2.protobuf.BoolValue bool_field = 16;
+  google2.protobuf.StringValue string_field = 17;
+  google2.protobuf.BytesValue bytes_field = 18;
+  // Part of struct, but useful to be able to test separately
+  google2.protobuf.Value value_field = 19;
+}
+
+// A repeated field for each well-known type.
+message RepeatedWellKnownTypes {
+  repeated google2.protobuf.Any any_field = 1;
+  repeated google2.protobuf.Api api_field = 2;
+  repeated google2.protobuf.Duration duration_field = 3;
+  repeated google2.protobuf.Empty empty_field = 4;
+  repeated google2.protobuf.FieldMask field_mask_field = 5;
+  repeated google2.protobuf.SourceContext source_context_field = 6;
+  repeated google2.protobuf.Struct struct_field = 7;
+  repeated google2.protobuf.Timestamp timestamp_field = 8;
+  repeated google2.protobuf.Type type_field = 9;
+  // These don't actually make a lot of sense, but they're not prohibited...
+  repeated google2.protobuf.DoubleValue double_field = 10;
+  repeated google2.protobuf.FloatValue float_field = 11;
+  repeated google2.protobuf.Int64Value int64_field = 12;
+  repeated google2.protobuf.UInt64Value uint64_field = 13;
+  repeated google2.protobuf.Int32Value int32_field = 14;
+  repeated google2.protobuf.UInt32Value uint32_field = 15;
+  repeated google2.protobuf.BoolValue bool_field = 16;
+  repeated google2.protobuf.StringValue string_field = 17;
+  repeated google2.protobuf.BytesValue bytes_field = 18;
+}
+
+message OneofWellKnownTypes {
+  oneof oneof_field {
+    google2.protobuf.Any any_field = 1;
+    google2.protobuf.Api api_field = 2;
+    google2.protobuf.Duration duration_field = 3;
+    google2.protobuf.Empty empty_field = 4;
+    google2.protobuf.FieldMask field_mask_field = 5;
+    google2.protobuf.SourceContext source_context_field = 6;
+    google2.protobuf.Struct struct_field = 7;
+    google2.protobuf.Timestamp timestamp_field = 8;
+    google2.protobuf.Type type_field = 9;
+    google2.protobuf.DoubleValue double_field = 10;
+    google2.protobuf.FloatValue float_field = 11;
+    google2.protobuf.Int64Value int64_field = 12;
+    google2.protobuf.UInt64Value uint64_field = 13;
+    google2.protobuf.Int32Value int32_field = 14;
+    google2.protobuf.UInt32Value uint32_field = 15;
+    google2.protobuf.BoolValue bool_field = 16;
+    google2.protobuf.StringValue string_field = 17;
+    google2.protobuf.BytesValue bytes_field = 18;
+  }
+}
+
+// A map field for each well-known type. We only
+// need to worry about the value part of the map being the
+// well-known types, as messages can't be map keys.
+message MapWellKnownTypes {
+  map<int32,google2.protobuf.Any> any_field = 1;
+  map<int32,google2.protobuf.Api> api_field = 2;
+  map<int32,google2.protobuf.Duration> duration_field = 3;
+  map<int32,google2.protobuf.Empty> empty_field = 4;
+  map<int32,google2.protobuf.FieldMask> field_mask_field = 5;
+  map<int32,google2.protobuf.SourceContext> source_context_field = 6;
+  map<int32,google2.protobuf.Struct> struct_field = 7;
+  map<int32,google2.protobuf.Timestamp> timestamp_field = 8;
+  map<int32,google2.protobuf.Type> type_field = 9;
+  map<int32,google2.protobuf.DoubleValue> double_field = 10;
+  map<int32,google2.protobuf.FloatValue> float_field = 11;
+  map<int32,google2.protobuf.Int64Value> int64_field = 12;
+  map<int32,google2.protobuf.UInt64Value> uint64_field = 13;
+  map<int32,google2.protobuf.Int32Value> int32_field = 14;
+  map<int32,google2.protobuf.UInt32Value> uint32_field = 15;
+  map<int32,google2.protobuf.BoolValue> bool_field = 16;
+  map<int32,google2.protobuf.StringValue> string_field = 17;
+  map<int32,google2.protobuf.BytesValue> bytes_field = 18;
+}

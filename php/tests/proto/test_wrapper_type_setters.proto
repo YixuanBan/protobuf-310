@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+import "google/protobuf/wrappers.proto";
+
+package foo;
+
+message TestWrapperSetters {
+  google2.protobuf.DoubleValue double_value = 1;
+  google2.protobuf.FloatValue float_value = 2;
+  google2.protobuf.Int64Value int64_value = 3;
+  google2.protobuf.UInt64Value uint64_value = 4;
+  google2.protobuf.Int32Value int32_value = 5;
+  google2.protobuf.UInt32Value uint32_value = 6;
+  google2.protobuf.BoolValue bool_value = 7;
+  google2.protobuf.StringValue string_value = 8;
+  google2.protobuf.BytesValue bytes_value = 9;
+
+  oneof wrapped_oneofs {
+    google2.protobuf.DoubleValue double_value_oneof = 10;
+    google2.protobuf.StringValue string_value_oneof = 11;
+  }
+
+  repeated google2.protobuf.StringValue repeated_string_value = 12;
+
+  map<string, google2.protobuf.StringValue> map_string_value = 13;
+}
+
+message TestWrapperAccessorConflicts {
+  int32 normal_vs_wrapper_value = 1;
+  google2.protobuf.Int32Value normal_vs_wrapper = 2;
+
+  int32 normal_vs_normal_value = 3;
+  int32 normal_vs_normal = 4;
+
+  google2.protobuf.Int32Value wrapper_vs_wrapper_value = 5;
+  google2.protobuf.Int32Value wrapper_vs_wrapper = 6;
+}
